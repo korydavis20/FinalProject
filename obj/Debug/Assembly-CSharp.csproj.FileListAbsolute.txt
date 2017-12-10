@@ -1,0 +1,64 @@
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\nunit.framework.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\obj\Debug\Assembly-CSharp.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\obj\Debug\Assembly-CSharp.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\nunit.framework.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\Kory\Documents\GitHub\Space-SHMUP Final Project\obj\Debug\Assembly-CSharp.pdb
