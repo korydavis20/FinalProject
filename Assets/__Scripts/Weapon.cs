@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 ///<summary>
 /// This is an enum of the various possible weapon types
@@ -26,6 +25,7 @@ public class WeaponDefinition{
 	public string letter; // leter to show on the power-up
 	public Color color = Color.white; // color of collar & power-up
 	public GameObject projectilePrefab; //Prefab for projectiles
+	//public GameObject missilePrefab; //prefab for missiles
 	public Color projectileColor = Color.white;
 	public float damageOnHit = 0; //Amount of damage caused
 	public float continuousDamage = 0; //Damage per second (Laser)
@@ -112,35 +112,49 @@ public class Weapon : MonoBehaviour{
 			break;
 
 		case WeaponType.spread: 
-			p = MakeProjectile(); // Make middle Projectile
+			p = MakeProjectile (); // Make middle Projectile
 			p.rigid.velocity = vel;
-			p = MakeProjectile(); // Make right Projectile
-			p.transform.rotation = Quaternion.AngleAxis( 10, Vector3.back );
+			p = MakeProjectile (); // Make right Projectile
+			p.transform.rotation = Quaternion.AngleAxis (10, Vector3.back);
 			p.rigid.velocity = p.transform.rotation * vel;
-			p = MakeProjectile(); // Make left Projectile
-			p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back );
+			p = MakeProjectile (); // Make left Projectile
+			p.transform.rotation = Quaternion.AngleAxis (-10, Vector3.back);
 			p.rigid.velocity = p.transform.rotation * vel;
 			break;
 
 		case WeaponType.laser:
 			p = MakeProjectile ();
-			//Debug.Log ("Ammo: " + def.current_ammo); //whyyyy doesn't this worrrkk
-			//def.current_ammo--;
 			p.rigid.velocity = vel;
-			//Main.UpdateAmmo (_type);
 			break;
+		
+
+		case WeaponType.missile:
+			p = MakeProjectile ();
+			p.rigid.velocity = vel;
+			break;
+		
 		}
 
 	}
 
 	public Projectile MakeProjectile() {
-		//Material m;
-		GameObject go = Instantiate<GameObject>( def.projectilePrefab );
-		//Transform temp;
-		/*if (type == WeaponType.laser) {
-			temp = go.GetComponent<Transform> ();
-			temp = (
+			GameObject go = Instantiate<GameObject> (def.projectilePrefab);
+
+		/*if (def.type == WeaponType.missile) {
+			go = Instantiate<GameObject> (def.missilePrefab);
 		}*/
+
+		Vector3 temp;
+
+		if (type == WeaponType.laser) {
+			temp = new Vector3 (0.25f, 4f, 0.5f);
+			go.transform.localScale = temp;
+		}
+
+		if (type == WeaponType.missile) {
+			temp = new Vector3 (0.4f, 2f, 0.5f);
+			go.transform.localScale = temp;
+		}
 
 		if ( transform.parent.gameObject.tag == "Hero" ) { 
 			go.tag = "ProjectileHero";
@@ -159,9 +173,4 @@ public class Weapon : MonoBehaviour{
 		return( p );
 	}
 
-	/*public void UpdateGUI(){
-		Debug.Log ("Ammo: " + ammo); //whyyyy doesn't this worrrkk
-		uitAmmo.text = "Ammo: " + ammo;
-	}*/
-	
 }

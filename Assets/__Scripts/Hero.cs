@@ -28,6 +28,7 @@ public class Hero : MonoBehaviour {
 	// Create a WeaponFireDelegate field named fireDelegate.
 	public WeaponFireDelegate fireDelegate;
 	private bool keyup = true;
+	public int weapMult = 1;
 
 	[SerializeField]
 	private float _shieldLevel = 1;
@@ -42,6 +43,8 @@ public class Hero : MonoBehaviour {
 		ClearWeapons();
 		weapons [0].SetType (WeaponType.blaster);
 		current_ammo = 9999999;
+		Main.S.level = 1;
+		Main.S.UpdateLevel();
 	}
 
 	void Update(){
@@ -66,7 +69,6 @@ public class Hero : MonoBehaviour {
 		// Then ensure that fireDelegate isn't null to avoid an error
 
 		if (Input.GetKeyUp("space")){
-			print("space key was released");
 			keyup = true;
 		}
 
@@ -74,14 +76,18 @@ public class Hero : MonoBehaviour {
 		if (Input.GetAxis ("Jump") == 1 && fireDelegate != null && keyup == true) { 
 
 			keyup = false;
+
+			if (current_ammo <= 0) {
+				ClearWeapons ();
+				weapons [0].SetType (WeaponType.blaster);
+			}
+
 			fireDelegate ();
 
 			if (weapons [0].def.type != WeaponType.blaster || weapons [1].def.type == WeaponType.blaster) {
-				current_ammo--;
+				current_ammo -= weapMult;
 				UpdateAmmo ();
 			}
-				
-
 
 		}
 	}
@@ -131,15 +137,23 @@ public class Hero : MonoBehaviour {
 
 		default:
 			if (pu.type == weapons[0].type) { // if it is the same type
+
 				Weapon w = GetEmptyWeaponSlot ();
 				current_ammo += 100;
+
+				if (weapMult < 5) {
+					weapMult++;
+				}
+
 				UpdateAmmo ();
+
 				if (w != null) {
 					//set it to pu.type
 					w.SetType(pu.type);
 				}
 			} else { //if this is a different weapon type
 				ClearWeapons();
+				weapMult = 1;
 				weapons[0].SetType (pu.type);
 				current_ammo = 100;
 				UpdateAmmo ();
@@ -180,7 +194,6 @@ public class Hero : MonoBehaviour {
 	}
 
 	public void UpdateAmmo(){
-		Debug.Log ("Ammo: " + current_ammo); //whyyyy doesn't this worrrkk
 		uitAmmo.text = "Ammo: " + current_ammo;
 		return;
 

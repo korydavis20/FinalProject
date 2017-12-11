@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Main : MonoBehaviour {
-	private WeaponType _type = WeaponType.none;
 	static public Main S; //singleton for main
 	static Dictionary <WeaponType, WeaponDefinition> WEAP_DICT;
-	int definitions = 0;
+
 	[Header("Set in Inspector")]
 	public GameObject[] prefabEnemies; //an array of enemy prefabs
 	public float enemySpawnPerSecond = 0.5f; // # Enemies/second
@@ -51,7 +50,6 @@ public class Main : MonoBehaviour {
 		S = this;
 		//set bndCheck to reference the BoundsCheck component on this GameObject
 		bndCheck = GetComponent<BoundsCheck>();
-
 		//invoke SpawnEnemy() once (in 2 seconds, based on default values)
 		Invoke("SpawnEnemy", 1f/enemySpawnPerSecond);
 
@@ -60,14 +58,6 @@ public class Main : MonoBehaviour {
 			WEAP_DICT[def.type] = def;
 		}
 	}
-	
-	/*public static void UpdateAmmo(WeaponType _type){
-		 
-		int ammo = def.current_ammo;
-		Debug.Log ("Ammo: " + ammo); //whyyyy doesn't this worrrkk
-		uitAmmo.text = "Ammo: " + ammo;
-		return;
-	}*/
 	
 	public void SpawnEnemy(){
 		//Pick a random Enemy prefab to instantiate
@@ -103,6 +93,7 @@ public class Main : MonoBehaviour {
 		SceneManager.LoadScene ("_Scene_0");
 		Totalscore = 0;
 		level = 1;
+		UpdateLevel ();
 
 	}
 	/// <summary>
@@ -127,10 +118,19 @@ public class Main : MonoBehaviour {
 		return( new WeaponDefinition() ); // c
 	}
 
-	public void UpdateGUI(){
+	public void UpdateGUI( ){
 		Totalscore += 100;
-		uitLevel.text = "Level: " + level + " of 4";
 		uitScore.text = "Score: " + Totalscore;
+		if (Totalscore == 2000) {
+			level++;
+			UpdateLevel ();
+		}
 	}
-		
+	public void UpdateLevel(){
+		Totalscore = 0;
+		if (level == 5) {
+			Restart ();
+		}
+		uitLevel.text = "Level: " + level + " of 4";
+	}
 }
