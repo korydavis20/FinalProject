@@ -140,10 +140,6 @@ public class Weapon : MonoBehaviour{
 	public Projectile MakeProjectile() {
 			GameObject go = Instantiate<GameObject> (def.projectilePrefab);
 
-		/*if (def.type == WeaponType.missile) {
-			go = Instantiate<GameObject> (def.missilePrefab);
-		}*/
-
 		Vector3 temp;
 
 		if (type == WeaponType.laser) {

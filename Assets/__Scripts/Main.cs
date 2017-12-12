@@ -61,7 +61,8 @@ public class Main : MonoBehaviour {
 	
 	public void SpawnEnemy(){
 		//Pick a random Enemy prefab to instantiate
-		int ndx = Random.Range(0, prefabEnemies.Length);
+		int ndx = Random.Range(0, level*2); //the range of enemy types scales based on the level
+		print("enemy #: " + ndx);
 		GameObject go = Instantiate<GameObject> (prefabEnemies [ndx]);
 
 		//position the enemy above the screen with a random x position
@@ -128,9 +129,9 @@ public class Main : MonoBehaviour {
 	}
 	public void UpdateLevel(){
 		Totalscore = 0;
-		if (level == 5) {
+		if (level > 5) {
 			Restart ();
 		}
-		uitLevel.text = "Level: " + level + " of 4";
+		uitLevel.text = "Level: " + level + " of 5";
 	}
 }

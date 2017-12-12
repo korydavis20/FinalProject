@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-	
+
+	/*public GameObject projectileEnemyPrefab; //Prefab for enemy projectiles
+	public float lastShotTime;
+	static public Transform PROJECTILE_ANCHOR;
+	*/
+
 	[Header("Set in Inspector: Enemy")]
 	public float speed = 10f; // the Speed in m/s
 	public float fireRate = 0.3f; //Seconds/shot (unused)
@@ -20,6 +25,8 @@ public class Enemy : MonoBehaviour {
 	public bool notifiedOfDestruction = false; // Will be used later
 
 	protected BoundsCheck bndCheck;
+
+
 	//this is a property: a method that acts like a field
 	public Vector3 pos{
 		get{
@@ -38,6 +45,13 @@ public class Enemy : MonoBehaviour {
 		for(int i = 0; i < materials.Length; i++){
 			originalColors[i] = materials[i].color;
 		}
+
+		/* Dynamically create an anchor for all Projectiles
+		if (PROJECTILE_ANCHOR == null) { 
+			GameObject go = new GameObject("_ProjectileAnchor");
+			PROJECTILE_ANCHOR = go.transform;
+		}*/
+
 	}
 	
 	// Update is called once per frame
@@ -52,7 +66,26 @@ public class Enemy : MonoBehaviour {
 				//we're off the bottom so destroy this GameObject
 			Destroy(gameObject);
 		}
+			
 	}
+
+	/*public void Fire(){
+
+		// If it hasn't been enough time between shots, return
+		if (Time.time - lastShotTime < 3) { 
+			return;
+		}
+
+		Projectile p;
+		Vector3 vel = Vector3.up * 30; 
+
+		if (transform.up.y < 0) {
+			vel.y = -vel.y;
+		}
+
+		p = MakeProjectileEnemy() ;
+
+	}*/
 
 	public virtual void Move(){
 		Vector3 tempPos = pos;
@@ -137,5 +170,24 @@ public class Enemy : MonoBehaviour {
 		}
 		showingDamage = false;
 	}
+
+/*	public Projectile MakeProjectileEnemy() {
+		GameObject go = Instantiate<GameObject> (projectileEnemyPrefab);
+
+		if (def.type == WeaponType.missile) {
+			go = Instantiate<GameObject> (def.missilePrefab);
+		}
+
+		if ( transform.parent.gameObject.tag == "Enemy" ) { 
+			go.tag = "ProjectileEnemy";
+			go.layer = LayerMask.NameToLayer("ProjectileEnemy");
+		}
+			
+		go.transform.SetParent( PROJECTILE_ANCHOR, true );
+		Projectile p = go.GetComponent<Projectile>();
+
+		lastShotTime = Time.time; 
+		return( p );
+	} */
 		
 }
