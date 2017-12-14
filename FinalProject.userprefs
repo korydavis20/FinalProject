@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\Hero.cs">
     <Files>
-      <File FileName="Assets\__Scripts\Enemy.cs" Line="10" Column="4" />
-      <File FileName="Assets\__Scripts\Main.cs" Line="9" Column="43" />
-      <File FileName="Assets\__Scripts\Hero.cs" Line="26" Column="2" />
-      <File FileName="Assets\__Scripts\Weapon.cs" Line="142" Column="1" />
+      <File FileName="Assets\__Scripts\Enemy.cs" Line="17" Column="30" />
+      <File FileName="Assets\__Scripts\Main.cs" Line="59" Column="33" />
+      <File FileName="Assets\__Scripts\Hero.cs" Line="161" Column="37" />
+      <File FileName="Assets\__Scripts\Weapon.cs" Line="1" Column="1" />
       <File FileName="Assets\__Scripts\Enemy_1.cs" Line="1" Column="1" />
       <File FileName="Assets\__Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\__Scripts\PowerUp.cs" Line="1" Column="1" />
+      <File FileName="Assets\__Scripts\ChangeScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\__Scripts\Enemy_5.cs" Line="1" Column="1" />
+      <File FileName="Assets\__Scripts\Enemy_3.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -16,7 +16,9 @@ public class Main : MonoBehaviour {
 	public GameObject prefabPowerUp;
 	public Text uitLevel; // The GT_Level GUIText
 	public Text uitScore; // The GT_Score GUIText
-
+	public Text uitTitle_Level; //GUIText for the level title
+	public Text uitBoss_health; //records the boss's health during the fight
+	public Text uitWin_Screen; //displays You Win! when the boss is defeated
 	public WeaponType[] powerUpFrequency = new WeaponType[] { 
 		WeaponType.blaster, WeaponType.blaster, WeaponType.spread, WeaponType.shield,  WeaponType.laser
 	};
@@ -26,6 +28,7 @@ public class Main : MonoBehaviour {
 	[Header("Set Dynamically")]
 	public int level;
 	public int Totalscore;
+	public bool boss_spawned = false;
 
 	public void shipDestroyed(Enemy e){
 		
@@ -51,19 +54,45 @@ public class Main : MonoBehaviour {
 		//set bndCheck to reference the BoundsCheck component on this GameObject
 		bndCheck = GetComponent<BoundsCheck>();
 		//invoke SpawnEnemy() once (in 2 seconds, based on default values)
-		Invoke("SpawnEnemy", 1f/enemySpawnPerSecond);
+		if (boss_spawned == false) {
+			uitBoss_health.enabled = false;
+			uitWin_Screen.enabled = false;
+			Invoke ("SpawnEnemy", 1f / enemySpawnPerSecond);
+		}
 
 		WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition> ();
 		foreach(WeaponDefinition def in weaponDefinitions){
 			WEAP_DICT[def.type] = def;
 		}
 	}
+
+	public void SpawnPowerUp(){
+		int ndx = Random.Range(0,powerUpFrequency.Length); 
+		WeaponType puType = powerUpFrequency[ndx];
+		Vector3 center = new Vector3 (0, 0, 0);
+		// Spawn a PowerUp
+		GameObject go = Instantiate( prefabPowerUp ) as GameObject;
+		PowerUp pu = go.GetComponent<PowerUp>();
+
+		// Set it to the proper WeaponType
+		pu.SetType( puType );
+		go.transform.position = center; //spawn powerup in the center of the map during boss fight
+	}
 	
 	public void SpawnEnemy(){
 		//Pick a random Enemy prefab to instantiate
-		int ndx = Random.Range(0, level*2); //the range of enemy types scales based on the level
-		print("enemy #: " + ndx);
-		GameObject go = Instantiate<GameObject> (prefabEnemies [ndx]);
+		GameObject go;
+		
+		if (level != 6) {
+			int ndx = Random.Range (0, level * 2); //the range of enemy types scales based on the level
+		
+			print("enemy #: " + ndx);
+			go = Instantiate<GameObject> (prefabEnemies [ndx]);
+		} else {
+			go = Instantiate<GameObject> (prefabEnemies [11]);
+			boss_spawned = true;
+			uitBoss_health.enabled = true;
+		}
 
 		//position the enemy above the screen with a random x position
 		float enemyPadding = enemyDefaultPadding;
@@ -80,8 +109,9 @@ public class Main : MonoBehaviour {
 		go.transform.position = pos;
 
 		//invoke SpawnEnemy() again
-		Invoke("SpawnEnemy", 1f/enemySpawnPerSecond);
-
+		if (boss_spawned == false) {
+			Invoke ("SpawnEnemy", 1f / enemySpawnPerSecond);
+		}
 	}
 
 	public void DelayedRestart(float delay){
@@ -90,13 +120,13 @@ public class Main : MonoBehaviour {
 	}
 
 	public void Restart(){
-		//reload _Scene_0 to restart the game 
-		SceneManager.LoadScene ("_Scene_0");
+		//reload title screen to restart the game 
+		SceneManager.LoadScene ("Title_Screen");
 		Totalscore = 0;
 		level = 1;
 		UpdateLevel ();
-
 	}
+
 	/// <summary>
 	/// Static function that gets a WeaponDefinition from the WEAP_DICT static
 	/// protected field of the Main class.
@@ -120,18 +150,35 @@ public class Main : MonoBehaviour {
 	}
 
 	public void UpdateGUI( ){
+		if (boss_spawned == true) {
+			uitWin_Screen.enabled = true;
+			DelayedRestart(5f);
+		}
+
 		Totalscore += 100;
 		uitScore.text = "Score: " + Totalscore;
-		if (Totalscore == 2000) {
+		if (Totalscore >= 2000) {
 			level++;
+			//uitTitle_Level.text = "Level: " + level;
+			//uitTitle_Level.CrossFadeAlpha(1f, 1f, false);
 			UpdateLevel ();
+			//SceneManager.LoadScene ("_Scene_" + scene);
 		}
 	}
+
 	public void UpdateLevel(){
 		Totalscore = 0;
-		if (level > 5) {
+		Debug.Log ("Level: " + level);
+		Delay ();
+		uitTitle_Level.CrossFadeAlpha(0.0f, 1f, false);
+
+		if (level > 6) {
 			Restart ();
 		}
-		uitLevel.text = "Level: " + level + " of 5";
+		uitLevel.text = "Level: " + level + " of 6";
+	}
+
+	IEnumerator Delay() {
+		yield return new WaitForSeconds (3); 
 	}
 }

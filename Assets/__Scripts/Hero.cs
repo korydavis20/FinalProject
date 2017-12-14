@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour {
 	static public Hero S;
-
+	public int ammoShot = 0;
 
 	[Header ("Set in Inspector")]
 	//these fields control the movement of the ship
@@ -80,15 +80,22 @@ public class Hero : MonoBehaviour {
 			if (current_ammo <= 0) {
 				ClearWeapons ();
 				weapons [0].SetType (WeaponType.blaster);
+				current_ammo = 9999999;
 			}
 
 			fireDelegate ();
 
 			if (weapons [0].def.type != WeaponType.blaster || weapons [1].def.type == WeaponType.blaster) {
 				current_ammo -= weapMult;
+				ammoShot++;
 				UpdateAmmo ();
 			}
 
+		}
+
+		if (ammoShot >= 80 ) {
+			Main.S.SpawnPowerUp ();
+			ammoShot = 0;
 		}
 	}
 
@@ -118,7 +125,13 @@ public class Hero : MonoBehaviour {
 
 		if (go.tag == "Enemy") { //if the shield was triggered by an enemy
 			shieldLevel--; //decrease the shieldlevel by 1
-			Destroy (go);
+
+			if(Main.S.boss_spawned == false){ //basic enemies are destroyed on collision with Hero but not boss
+			
+				Destroy (go); //destroy enemy
+			
+			}
+
 		}else if(go.tag == "PowerUp"){
 			//if the shield was triggered by a PowerUp
 			AbsorbPowerUp(go);
@@ -137,13 +150,19 @@ public class Hero : MonoBehaviour {
 
 		default:
 			if (pu.type == weapons[0].type) { // if it is the same type
-
+				
 				Weapon w = GetEmptyWeaponSlot ();
 				current_ammo += 100;
 
 				if (weapMult < 5) {
 					weapMult++;
+
+					if (pu.type == WeaponType.blaster) {
+						current_ammo = 100 * weapMult;
+					}
 				}
+
+
 
 				UpdateAmmo ();
 

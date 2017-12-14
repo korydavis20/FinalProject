@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour {
 	public float speed = 10f; // the Speed in m/s
 	public float fireRate = 0.3f; //Seconds/shot (unused)
 	public float health = 10;
+	public float boss_health = 1000;
 	public int score = 100; // points earned for destroying this
 	public float showDamageDuration = 0.1f; //# seconds to show damage
 	public float powerUpDropChance = 1f; //chance to drop a powerup
@@ -110,9 +112,14 @@ public class Enemy : MonoBehaviour {
 			Destroy (p);
 
 			//get the damage amount from the Main WEAP_DICT
-			health -= Main.GetWeaponDefinition (p.type).damageOnHit;
-			health -= Main.GetWeaponDefinition (p.type).continuousDamage;
-
+			if (Main.S.boss_spawned == false) {
+				health -= Main.GetWeaponDefinition (p.type).damageOnHit;
+				health -= Main.GetWeaponDefinition (p.type).continuousDamage;
+			} else {
+				boss_health-= Main.GetWeaponDefinition (p.type).damageOnHit;
+				boss_health -= Main.GetWeaponDefinition (p.type).continuousDamage;
+				Main.S.uitBoss_health.text = "Boss Health: " + boss_health;
+			}
 			/*if (Main.GetWeaponDefinition (p.type).continuousDamage != 0) {
 				//(Time.time - timeStart)/timeDuration
 				float startTime = Time.time;
@@ -126,7 +133,7 @@ public class Enemy : MonoBehaviour {
 				}
 			}*/
 
-			if (health <= 0) {
+			if (health <= 0 || boss_health <= 0) {
 				
 				// Tell the Main singleton that this ship was destroyed // b
 				if (!notifiedOfDestruction){
